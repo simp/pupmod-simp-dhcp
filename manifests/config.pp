@@ -1,6 +1,6 @@
-# == Class: dhcp::dhcpd
+# == Class: dhcp::config
 #
-# This class is used to start dhcpd and create dhcpd.conf
+# This class is used to configure DHCP for SIMP.
 #
 # == Parameters
 #
@@ -17,15 +17,18 @@
 #
 # == Authors
 #
-# * Trevor Vaughan <tvaughan@onyxpoint.com>
+# * Trevor Vaughan <mailto:tvaughan@onyxpoint.com>
+# * Kendall Moore <mailto:kmoore@keywcorp.com>
 #
-class dhcp::dhcpd (
-  $rsync_server = hiera('rsync::server'),
-  $rsync_timeout = hiera('rsync::timeout','2')
-){
-  include 'logrotate'
-  include 'rsync'
-  include 'rsyslog'
+class dhcp::config (
+  $rsync_server = $::dhcp::params::rsync_server,
+  $rsync_timeout = $::dhcp::params::rsync_timeout
+) inherits dhcp::params {
+  validate_net_list($rsync_server)
+  validate_integer($rsync_timeout)
+
+  include '::dhcp'
+  include '::rsync'
 
   file { '/etc/dhcp':
     ensure    => 'directory',
@@ -48,30 +51,6 @@ class dhcp::dhcpd (
     target    => '/etc/dhcp/dhcpd.conf'
   }
 
-  iptables_rule { 'allow_bootp':
-    table   => 'filter',
-    order   => '11',
-    content => '-p udp --dport 67 -j ACCEPT'
-  }
-
-  logrotate::add { 'dhcpd':
-    log_files  => [ '/var/log/dhcpd.log' ],
-    lastaction => '/sbin/service rsyslog restart > /dev/null 2>&1 || true'
-  }
-
-  package { 'dhcp': ensure => 'latest' }
-
-  service { 'dhcpd':
-    ensure      => 'running',
-    enable      => true,
-    hasstatus   => true,
-    hasrestart  => true,
-    require     => [
-      File['/etc/dhcpd.conf'],
-      Package['dhcp']
-    ]
-  }
-
   rsync { 'dhcpd':
     user     => 'dhcpd_rsync',
     password => passgen('dhcpd_rsync'),
@@ -80,10 +59,5 @@ class dhcp::dhcpd (
     source   => 'dhcpd/dhcpd.conf',
     target   => '/etc/dhcp/dhcpd.conf',
     notify   => Service['dhcpd']
-  }
-
-  rsyslog::add_rule { '10dhcpd':
-    rule    => 'if $programname == \'dhcpd\' then /var/log/dhcpd.log
-                & ~'
   }
 }
