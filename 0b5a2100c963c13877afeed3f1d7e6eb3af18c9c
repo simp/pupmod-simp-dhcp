@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facab960_1ce12afe",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-06-18T00:35:57Z",
+      "side": 1,
+      "message": "TODO: Document class parameters, with deprecation notices?",
+      "revId": "0b5a2100c963c13877afeed3f1d7e6eb3af18c9c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "facab960_7cc6b669",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-06-18T00:35:57Z",
+      "side": 1,
+      "message": "This might be better organized as a single statement, \"include \u0027dhcp::server\u0027\", which then the logic inside this if statement.  That would allow us to deprecate the $is_server parameters and include dhcp::server and dhcp::client directly.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "0b5a2100c963c13877afeed3f1d7e6eb3af18c9c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
