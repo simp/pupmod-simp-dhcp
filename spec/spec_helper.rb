@@ -53,6 +53,8 @@ end
   c.before(:each) do
     @spec_global_env_temp = Dir.mktmpdir('simptest')
     Puppet[:environmentpath] = @spec_global_env_temp
+    Puppet[:user] = Etc.getpwuid(Process.uid).name
+    Puppet[:group] = Etc.getgrgid(Process.gid).name
   end
 
   c.after(:each) do
