@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "facab960_3c042e49",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-06-18T02:46:59Z",
+      "side": 1,
+      "message": "Provide default in case hiera is not available",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 32,
+        "endChar": 46
+      },
+      "revId": "0b5a2100c963c13877afeed3f1d7e6eb3af18c9c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "facab960_7cfa3644",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-06-18T02:46:59Z",
+      "side": 1,
+      "message": "Provide default in case hiera is not available",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "0b5a2100c963c13877afeed3f1d7e6eb3af18c9c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "facab960_7cc6b669",
         "filename": "manifests/init.pp",
         "patchSetId": 1
