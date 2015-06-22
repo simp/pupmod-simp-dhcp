@@ -28,24 +28,24 @@ class dhcp::dhcpd (
   include 'rsyslog'
 
   file { '/etc/dhcp':
-    ensure    => 'directory',
-    owner     => 'root',
-    group     => 'root',
-    mode      => '0640',
+    ensure => 'directory',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0640',
   }
 
   file { '/etc/dhcp/dhcpd.conf':
-    ensure    => 'file',
-    owner     => 'root',
-    group     => 'root',
-    mode      => '0640',
-    notify    => Rsync['dhcpd'],
-    require   => File['/etc/dhcp']
+    ensure  => 'file',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0640',
+    notify  => Rsync['dhcpd'],
+    require => File['/etc/dhcp']
   }
 
   file { '/etc/dhcpd.conf':
-    ensure    => 'symlink',
-    target    => '/etc/dhcp/dhcpd.conf'
+    ensure => 'symlink',
+    target => '/etc/dhcp/dhcpd.conf'
   }
 
   iptables_rule { 'allow_bootp':
@@ -62,11 +62,11 @@ class dhcp::dhcpd (
   package { 'dhcp': ensure => 'latest' }
 
   service { 'dhcpd':
-    ensure      => 'running',
-    enable      => true,
-    hasstatus   => true,
-    hasrestart  => true,
-    require     => [
+    ensure     => 'running',
+    enable     => true,
+    hasstatus  => true,
+    hasrestart => true,
+    require    => [
       File['/etc/dhcpd.conf'],
       Package['dhcp']
     ]

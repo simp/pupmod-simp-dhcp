@@ -1,11 +1,12 @@
 ---
 fixtures:
+  repositories:
+    common: "git://github.com/simp/pupmod-simp-common"
+    concat: "git://github.com/simp/pupmod-simp-concat"
+    iptables: "git://github.com/simp/pupmod-simp-iptables"
+    logrotate: "git://github.com/simp/pupmod-simp-logrotate"
+    rsync: "git://github.com/simp/pupmod-simp-rsync"
+    rsyslog: "git://github.com/simp/pupmod-simp-rsyslog"
+    stdlib: "git://github.com/simp/puppetlabs-stdlib"
   symlinks:
     dhcp: "#{source_dir}"
-    common: "#{source_dir}/../common"
-    concat: "#{source_dir}/../concat"
-    iptables: "#{source_dir}/../iptables"
-    logrotate: "#{source_dir}/../logrotate"
-    rsync: "#{source_dir}/../rsync"
-    rsyslog: "#{source_dir}/../rsyslog"
-    stdlib: "#{source_dir}/../stdlib"
