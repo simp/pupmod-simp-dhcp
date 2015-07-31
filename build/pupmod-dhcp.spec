@@ -1,14 +1,14 @@
 Summary: Dhcp Puppet Module
 Name: pupmod-dhcp
 Version: 4.1.0
-Release: 3
+Release: 4
 License: Apache License, Version 2.0
 Group: Applications/System
 Source: %{name}-%{version}-%{release}.tar.gz
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: pupmod-iptables >= 4.1.0-3
 Requires: pupmod-logrotate >= 4.1.0
-Requires: pupmod-rsyslog >= 4.1.0-2
+Requires: pupmod-rsyslog >= 5.0.0
 Requires: pupmod-rsync >= 4.0.1-14
 Requires: puppet >= 3.3.0
 Requires: simp_bootstrap >= 4.1.0-2
@@ -57,6 +57,9 @@ fi
 # Post uninstall stuff
 
 %changelog
+* Fri Jul 21 2015 Kendall Moore <kmoore@keywcorp.com> - 4.1.0-4
+- Updated to use new rsyslog module.
+
 * Fri Feb 27 2015 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.1.0-3
 - Updated to use the new 'simp' environment.
 - Changed calls directly to /etc/init.d/rsyslog to '/sbin/service rsyslog' so
