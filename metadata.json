@@ -1,0 +1,53 @@
+{
+  "name":    "pupmod-simp-dhcp",
+  "version": "4.1.0-4",
+  "author":  "simp",
+  "summary": "A Puppet module to automate configuration of DHCP",
+  "license": "Apache-2.0",
+  "source":  "https://github.com/simp/pupmod-simp-dhcp",
+  "project_page": "https://github.com/simp/pupmod-simp-dhcp",
+  "issues_url":   "https://simp-project.atlassian.net",
+  "tags": [ "simp", "dhcp" ],
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.1.0"
+    },
+    {
+      "name": "simp-iptables",
+      "version_requirement": ">= 4.1.0"
+    },
+    {
+      "name": "simp-simplib",
+      "version_requirement": ">= 4.1.0"
+    },
+    {
+      "name": "simp-logrotate",
+      "version_requirement": ">= 4.1.0"
+    },
+    {
+      "name": "simp-rsyslog",
+      "version_requirement": ">= 5.0.0"
+    },
+    {
+      "name": "simp-rsync",
+      "version_requirement": ">= 4.0.1-14"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ]
+}
