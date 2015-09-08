@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ae5cdf2_69658c44",
+        "filename": "spec/classes/dhcpd_spec.rb",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1004834
+      },
+      "writtenOn": "2015-09-08T18:27:15Z",
+      "side": 1,
+      "message": "Whitespace!",
+      "revId": "63b2493d3350c2624091f50ef26591b1287c52ae",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
