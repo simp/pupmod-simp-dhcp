@@ -1,7 +1,7 @@
 Summary: Dhcp Puppet Module
 Name: pupmod-dhcp
 Version: 4.1.0
-Release: 4
+Release: 5
 License: Apache License, Version 2.0
 Group: Applications/System
 Source: %{name}-%{version}-%{release}.tar.gz
@@ -16,7 +16,7 @@ Buildarch: noarch
 Requires: simp-bootstrap >= 4.2.0
 Obsoletes: pupmod-dhcp-test
 
-Prefix: /etc/puppet/environments/simp/modules
+Prefix: %{_sysconfdir}/puppet/environments/simp/modules
 
 %description
 This Puppet module provides the capability to configure dhcpd.
@@ -57,7 +57,10 @@ fi
 # Post uninstall stuff
 
 %changelog
-* Fri Jul 21 2015 Kendall Moore <kmoore@keywcorp.com> - 4.1.0-4
+* Mon Nov 09 2015 Chris Tessmer <chris.tessmer@onypoint.com> - 4.1.0-5
+- migration to simplib and simpcat (lib/ only)
+
+* Tue Jul 21 2015 Kendall Moore <kmoore@keywcorp.com> - 4.1.0-4
 - Updated to use new rsyslog module.
 
 * Fri Feb 27 2015 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.1.0-3
@@ -78,7 +81,7 @@ fi
 * Mon Apr 14 2014 Trevor Vaughan <tvaughan@onyxpoint.com>
 - Tidied up the code to work with Hiera.
 
-* Mon Dec 10 2013 Kendall Moore <kmoore@keywcorp.com>
+* Tue Dec 10 2013 Kendall Moore <kmoore@keywcorp.com>
 - Updated to new code documentation format.
 
 * Mon Feb 25 2013 Maintenance
@@ -90,7 +93,7 @@ fi
 4.0.1-2
 - Updated the rsyslog rule to be more concise.
 
-* Wed May 03 2012 Maintenance
+* Thu May 03 2012 Maintenance
 4.0.1-1
 - Linked /etc/dhcpd.conf to /etc/dhcp/dhcpd.conf for consistency between RHEL5
   and RHEL6.
@@ -137,7 +140,7 @@ fi
 * Tue Oct 26 2010 Maintenance - 1-2
 - Converting all spec files to check for directories prior to copy.
 
-* Tue Jun 10 2010 Maintenance
+* Thu Jun 10 2010 Maintenance
 1.0-1
 - No templates to copy in caused an RPM build failure.
 
