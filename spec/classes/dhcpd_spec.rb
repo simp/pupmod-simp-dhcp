@@ -12,28 +12,28 @@ describe 'dhcp::dhcpd' do
         context 'in the :foo environment' do
           let(:environment){:foo}
 
-          it { should create_class('dhcp::dhcpd') }
-          it { should compile.with_all_deps }
+          it { is_expected.to create_class('dhcp::dhcpd') }
+          it { is_expected.to compile.with_all_deps }
 
-          it { should create_file('/etc/dhcp').with_ensure('directory') }
-          it { should create_file('/etc/dhcp/dhcpd.conf').with({
+          it { is_expected.to create_file('/etc/dhcp').with_ensure('directory') }
+          it { is_expected.to create_file('/etc/dhcp/dhcpd.conf').with({
               :ensure  => 'file',
               :notify  => 'Rsync[dhcpd]',
               :require => 'File[/etc/dhcp]'
             })
           }
 
-          it { should create_file('/etc/dhcpd.conf').with({
+          it { is_expected.to create_file('/etc/dhcpd.conf').with({
               :ensure => 'symlink',
               :target => '/etc/dhcp/dhcpd.conf'
             })
           }
 
-          it { should create_iptables_rule('allow_bootp') }
+          it { is_expected.to create_iptables_rule('allow_bootp') }
 
-          it { should contain_package('dhcp').with_ensure('latest') }
+          it { is_expected.to contain_package('dhcp').with_ensure('latest') }
 
-          it { should contain_service('dhcpd').with({
+          it { is_expected.to contain_service('dhcpd').with({
               :ensure  =>'running',
               :require => ['File[/etc/dhcpd.conf]', 'Package[dhcp]']
             })
