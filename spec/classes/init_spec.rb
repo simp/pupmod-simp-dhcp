@@ -1,5 +1,6 @@
-describe 'dhcp' do
+require 'spec_helper'
 
+describe 'dhcp' do
   context 'supported operating systems' do
     on_supported_os.each do |os, facts|
       let(:facts) do
