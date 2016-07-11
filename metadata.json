@@ -1,6 +1,6 @@
 {
-  "name":    "pupmod-simp-dhcp",
-  "version": "4.1.0-4",
+  "name":    "simp-dhcp",
+  "version": "4.1.1",
   "author":  "simp",
   "summary": "A Puppet module to automate configuration of DHCP",
   "license": "Apache-2.0",
