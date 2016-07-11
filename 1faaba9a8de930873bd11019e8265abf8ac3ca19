@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_64c242eb",
+        "filename": "metadata.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1006407
+      },
+      "writtenOn": "2016-07-11T22:57:05Z",
+      "side": 1,
+      "message": "Should this be puppetlabs/stdlib",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "1faaba9a8de930873bd11019e8265abf8ac3ca19",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
