@@ -1,0 +1,5 @@
+Requires: pupmod-iptables >= 4.1.0-3
+Requires: pupmod-logrotate >= 4.1.0
+Requires: pupmod-rsyslog >= 5.0.0
+Requires: pupmod-rsync >= 4.0.1-14
+Obsoletes: pupmod-dhcp-test >= 0.0.1
