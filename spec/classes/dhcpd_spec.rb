@@ -38,6 +38,8 @@ describe 'dhcp::dhcpd' do
               :require => ['File[/etc/dhcpd.conf]', 'Package[dhcp]']
             })
           }
+
+          it { is_expected.to contain_rsyslog__rule__local ( 'XX_dhcpd' ) }
         end
       end
     end

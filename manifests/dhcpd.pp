@@ -82,7 +82,7 @@ class dhcp::dhcpd (
     notify   => Service['dhcpd']
   }
 
-  rsyslog::rule::local { '10dhcpd':
+  rsyslog::rule::local { 'XX_dhcpd':
     rule            => 'if ($programname == \'dhcpd\') then',
     target_log_file => '/var/log/dhcpd.log',
     stop_processing => true
