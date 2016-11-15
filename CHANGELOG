@@ -1,3 +1,6 @@
+* Tue Nov 15 2016 Liz Nemsick <lnemsick.simp@gmail.com> - 4.1.3-0
+- Updated iptables dependency version
+
 * Mon Jul 11 2016 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.1.1-0
 - Migration to semantic versioning and fix of the build system
 
