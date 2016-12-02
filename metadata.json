@@ -1,6 +1,6 @@
 {
   "name": "simp-dhcp",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "author": "SIMP Team",
   "summary": "A Puppet module to automate configuration of DHCP",
   "license": "Apache-2.0",
