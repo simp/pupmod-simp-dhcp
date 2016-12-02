@@ -18,7 +18,7 @@ describe 'dhcp::dhcpd' do
           it { is_expected.to create_file('/etc/dhcp').with_ensure('directory') }
           it { is_expected.to create_file('/etc/dhcp/dhcpd.conf').with({
               :ensure  => 'file',
-              :notify  => 'Rsync[dhcpd]',
+              :notify  => "Rsync[dhcpd_#{environment}]",
               :require => 'File[/etc/dhcp]'
             })
           }

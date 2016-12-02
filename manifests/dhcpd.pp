@@ -39,7 +39,7 @@ class dhcp::dhcpd (
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
-    notify  => Rsync['dhcpd'],
+    notify  => Rsync["dhcpd_${environment}"],
     require => File['/etc/dhcp']
   }
 
@@ -72,7 +72,7 @@ class dhcp::dhcpd (
     ]
   }
 
-  rsync { 'dhcpd':
+  rsync { "dhcpd_${environment}":
     user     => 'dhcpd_rsync',
     password => passgen('dhcpd_rsync'),
     server   => $rsync_server,
