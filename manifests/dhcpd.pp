@@ -20,7 +20,7 @@
 # * Trevor Vaughan <tvaughan@onyxpoint.com>
 #
 class dhcp::dhcpd (
-  $rsync_source = "dhcpd_${environment}/dhcpd.conf",
+  $rsync_source = "dhcpd_${::environment}/dhcpd.conf",
   $rsync_server = hiera('rsync::server'),
   $rsync_timeout = hiera('rsync::timeout','2')
 ){
@@ -75,8 +75,8 @@ class dhcp::dhcpd (
   }
 
   rsync { 'dhcpd':
-    user     => 'dhcpd_rsync',
-    password => passgen('dhcpd_rsync'),
+    user     => "dhcpd_rsync_${::environment}",
+    password => passgen("dhcpd_rsync_${::environment}"),
     server   => $rsync_server,
     timeout  => $rsync_timeout,
     source   => $rsync_source,
