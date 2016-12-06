@@ -31,11 +31,18 @@ describe 'dhcp::dhcpd' do
 
           it { is_expected.to create_iptables_rule('allow_bootp') }
 
+          it { is_expected.to create_logrotate__add('dhcpd') }
+
           it { is_expected.to contain_package('dhcp').with_ensure('latest') }
 
           it { is_expected.to contain_service('dhcpd').with({
               :ensure  =>'running',
               :require => ['File[/etc/dhcpd.conf]', 'Package[dhcp]']
+            })
+          }
+
+          it { is_expected.to contain_rsync('dhcpd').with({
+              :source => "dhcpd_#{environment}/dhcpd.conf"
             })
           }
 
