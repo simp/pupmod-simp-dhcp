@@ -20,12 +20,14 @@
 # * Trevor Vaughan <tvaughan@onyxpoint.com>
 #
 class dhcp::dhcpd (
+  $rsync_source = "dhcpd_${::environment}/dhcpd.conf",
   $rsync_server = hiera('rsync::server'),
   $rsync_timeout = hiera('rsync::timeout','2')
 ){
-  include 'logrotate'
-  include 'rsync'
-  include 'rsyslog'
+
+  include '::logrotate'
+  include '::rsync'
+  include '::rsyslog'
 
   file { '/etc/dhcp':
     ensure => 'directory',
@@ -73,11 +75,11 @@ class dhcp::dhcpd (
   }
 
   rsync { 'dhcpd':
-    user     => 'dhcpd_rsync',
-    password => passgen('dhcpd_rsync'),
+    user     => "dhcpd_rsync_${::environment}",
+    password => passgen("dhcpd_rsync_${::environment}"),
     server   => $rsync_server,
     timeout  => $rsync_timeout,
-    source   => 'dhcpd/dhcpd.conf',
+    source   => $rsync_source,
     target   => '/etc/dhcp/dhcpd.conf',
     notify   => Service['dhcpd']
   }
