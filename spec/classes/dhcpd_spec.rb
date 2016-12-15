@@ -9,12 +9,17 @@ describe 'dhcp::dhcpd' do
       end
 
       context "on #{os}" do
+        let(:environment){:foo}
         context 'in the :foo environment' do
-          let(:environment){:foo}
 
           it { is_expected.to create_class('dhcp::dhcpd') }
           it { is_expected.to compile.with_all_deps }
-
+          it { is_expected.to contain_package('dhcp').with_ensure('latest') }
+          it { is_expected.to contain_service('dhcpd').with({
+              :ensure  =>'running',
+              :require => ['File[/etc/dhcpd.conf]', 'Package[dhcp]']
+            })
+          }
           it { is_expected.to create_file('/etc/dhcp').with_ensure('directory') }
           it { is_expected.to create_file('/etc/dhcp/dhcpd.conf').with({
               :ensure  => 'file',
@@ -22,30 +27,26 @@ describe 'dhcp::dhcpd' do
               :require => 'File[/etc/dhcp]'
             })
           }
-
           it { is_expected.to create_file('/etc/dhcpd.conf').with({
               :ensure => 'symlink',
               :target => '/etc/dhcp/dhcpd.conf'
             })
           }
-
-          it { is_expected.to create_iptables_rule('allow_bootp') }
-
-          it { is_expected.to create_logrotate__add('dhcpd') }
-
-          it { is_expected.to contain_package('dhcp').with_ensure('latest') }
-
-          it { is_expected.to contain_service('dhcpd').with({
-              :ensure  =>'running',
-              :require => ['File[/etc/dhcpd.conf]', 'Package[dhcp]']
-            })
-          }
-
           it { is_expected.to contain_rsync('dhcpd').with({
               :source => "dhcpd_#{environment}/dhcpd.conf"
             })
           }
+          it { is_expected.to_not create_iptables_rule('allow_bootp') }
+          it { is_expected.to_not create_logrotate__add('dhcpd') }
+          it { is_expected.to_not contain_rsyslog__rule__local ( 'XX_dhcpd' ) }
+        end
 
+        context 'with firewall => true, syslog => true, logrotate => true' do
+	  let(:params) {{:firewall => true, :syslog => true, :logrotate => true }}
+          it { is_expected.to create_class('dhcp::dhcpd') }
+          it { is_expected.to compile.with_all_deps }
+          it { is_expected.to create_iptables_rule('allow_bootp') }
+          it { is_expected.to create_logrotate__add('dhcpd') }
           it { is_expected.to contain_rsyslog__rule__local ( 'XX_dhcpd' ) }
         end
       end

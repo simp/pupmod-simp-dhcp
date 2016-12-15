@@ -10,12 +10,9 @@
 # * Trevor Vaughan <tvaughan@onyxpoint.com>
 #
 class dhcp (
-  $is_client = false,
-  $is_server = true
+  Boolean $is_client = false,
+  Boolean $is_server = true
 ){
-  validate_bool($is_client)
-  validate_bool($is_server)
-
   if $is_client {
     notify { 'dhcp::client is not yet implemented': }
   }
