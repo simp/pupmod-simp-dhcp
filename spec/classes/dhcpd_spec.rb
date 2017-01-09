@@ -36,8 +36,8 @@ describe 'dhcp::dhcpd' do
               :source => "dhcpd_#{environment}/dhcpd.conf"
             })
           }
-          it { is_expected.to_not create_iptables_rule('allow_bootp') }
-          it { is_expected.to_not create_logrotate__add('dhcpd') }
+          it { is_expected.to_not create_iptables__rule('allow_bootp') }
+          it { is_expected.to_not create_logrotate__rule('dhcpd') }
           it { is_expected.to_not contain_rsyslog__rule__local ( 'XX_dhcpd' ) }
         end
 
@@ -45,8 +45,8 @@ describe 'dhcp::dhcpd' do
 	  let(:params) {{:firewall => true, :syslog => true, :logrotate => true }}
           it { is_expected.to create_class('dhcp::dhcpd') }
           it { is_expected.to compile.with_all_deps }
-          it { is_expected.to create_iptables_rule('allow_bootp') }
-          it { is_expected.to create_logrotate__add('dhcpd') }
+          it { is_expected.to create_iptables__rule('allow_bootp') }
+          it { is_expected.to create_logrotate__rule('dhcpd') }
           it { is_expected.to contain_rsyslog__rule__local ( 'XX_dhcpd' ) }
         end
       end
