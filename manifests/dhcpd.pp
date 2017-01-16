@@ -90,9 +90,9 @@ class dhcp::dhcpd (
   }
 
   if $firewall {
-    iptables_rule { 'allow_bootp':
+    iptables::rule { 'allow_bootp':
       table   => 'filter',
-      order   => '11',
+      order   => 11,
       content => '-p udp --dport 67 -j ACCEPT'
     }
   }
@@ -106,7 +106,7 @@ class dhcp::dhcpd (
     }
     if $logrotate {
       include '::logrotate'
-      logrotate::add { 'dhcpd':
+      logrotate::rule { 'dhcpd':
         log_files  => [ '/var/log/dhcpd.log' ],
         lastaction => '/sbin/service rsyslog restart > /dev/null 2>&1 || true'
       }
