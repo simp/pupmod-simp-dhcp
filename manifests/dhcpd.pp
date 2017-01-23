@@ -100,7 +100,7 @@ class dhcp::dhcpd (
   if $syslog {
     include '::rsyslog'
     rsyslog::rule::local { 'XX_dhcpd':
-      rule            => 'if ($programname == \'dhcpd\') then',
+      rule            => '$programname == \'dhcpd\'',
       target_log_file => '/var/log/dhcpd.log',
       stop_processing => true
     }
