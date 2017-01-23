@@ -1,16 +1,15 @@
 require 'spec_helper'
 
 describe 'dhcp::dhcpd' do
-
   context 'supported operating systems' do
     on_supported_os.each do |os, facts|
-      let(:facts) do
-        facts
-      end
-
       context "on #{os}" do
         let(:environment){:foo}
         context 'in the :foo environment' do
+
+          let(:facts) do
+            facts
+          end
 
           it { is_expected.to create_class('dhcp::dhcpd') }
           it { is_expected.to compile.with_all_deps }
@@ -33,7 +32,7 @@ describe 'dhcp::dhcpd' do
             })
           }
           it { is_expected.to contain_rsync('dhcpd').with({
-              :source => "dhcpd_#{environment}/dhcpd.conf"
+              :source => "dhcpd_#{environment}_#{facts[:os][:name]}/dhcpd.conf"
             })
           }
           it { is_expected.to_not create_iptables__rule('allow_bootp') }
@@ -42,7 +41,7 @@ describe 'dhcp::dhcpd' do
         end
 
         context 'with firewall => true, syslog => true, logrotate => true' do
-	  let(:params) {{:firewall => true, :syslog => true, :logrotate => true }}
+	        let(:params) {{:firewall => true, :syslog => true, :logrotate => true }}
           it { is_expected.to create_class('dhcp::dhcpd') }
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to create_iptables__rule('allow_bootp') }
