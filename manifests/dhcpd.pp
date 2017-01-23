@@ -79,9 +79,10 @@ class dhcp::dhcpd (
     ]
   }
 
+  $_downcase_os_name = downcase($facts['os']['name'])
   rsync { 'dhcpd':
-    user     => "dhcpd_rsync_${::environment}",
-    password => passgen("dhcpd_rsync_${::environment}"),
+    user     => "dhcpd_rsync_${::environment}_${_downcase_os_name}",
+    password => passgen("dhcpd_rsync_${::environment}_${_downcase_os_name}"),
     server   => $rsync_server,
     timeout  => $rsync_timeout,
     source   => $rsync_source,

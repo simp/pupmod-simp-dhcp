@@ -5,12 +5,11 @@ describe 'dhcp::dhcpd' do
     on_supported_os.each do |os, facts|
       context "on #{os}" do
         let(:environment){:foo}
+        let(:facts) do
+          facts
+        end
+
         context 'in the :foo environment' do
-
-          let(:facts) do
-            facts
-          end
-
           it { is_expected.to create_class('dhcp::dhcpd') }
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to contain_package('dhcp').with_ensure('latest') }
