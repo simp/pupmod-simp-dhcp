@@ -35,7 +35,7 @@
 # * Trevor Vaughan <tvaughan@onyxpoint.com>
 #
 class dhcp::dhcpd (
-  String                   $rsync_source  = "dhcpd_${::environment}/dhcpd.conf",
+  String                   $rsync_source  = "dhcpd_${::environment}_${facts['os']['name']}/dhcpd.conf",
   String                   $rsync_server  = simplib::lookup('simp_options::rsync::server', { 'default_value'  => '127.0.0.1' }),
   Stdlib::Compat::Integer  $rsync_timeout = simplib::lookup('simp_options::rsync::timeout', { 'default_value' => '2' }),
   Boolean                  $firewall      = simplib::lookup('simp_options::firewall', { 'default_value'       => false }),
@@ -79,9 +79,10 @@ class dhcp::dhcpd (
     ]
   }
 
+  $_downcase_os_name = downcase($facts['os']['name'])
   rsync { 'dhcpd':
-    user     => "dhcpd_rsync_${::environment}",
-    password => passgen("dhcpd_rsync_${::environment}"),
+    user     => "dhcpd_rsync_${::environment}_${_downcase_os_name}",
+    password => passgen("dhcpd_rsync_${::environment}_${_downcase_os_name}"),
     server   => $rsync_server,
     timeout  => $rsync_timeout,
     source   => $rsync_source,
@@ -100,7 +101,7 @@ class dhcp::dhcpd (
   if $syslog {
     include '::rsyslog'
     rsyslog::rule::local { 'XX_dhcpd':
-      rule            => 'if ($programname == \'dhcpd\') then',
+      rule            => '$programname == \'dhcpd\'',
       target_log_file => '/var/log/dhcpd.log',
       stop_processing => true
     }

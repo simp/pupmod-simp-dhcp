@@ -1,3 +1,7 @@
+* Mon Jan 23 2017 Nick Markowski <nmarkowski@keywcorp.com> - 6.0.0-0
+- Calls to rsyslog::rule no longer contain logic
+- Rsync source updated to new location
+
 * Tue Dec 13 2016 Nick Markowski <nmarkowski@keywcorp.com> - 6.0.0-0
 - Updated global catalysts
 - Strong typed
