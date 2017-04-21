@@ -108,8 +108,8 @@ class dhcp::dhcpd (
     if $logrotate {
       include '::logrotate'
       logrotate::rule { 'dhcpd':
-        log_files  => [ '/var/log/dhcpd.log' ],
-        lastaction => '/sbin/service rsyslog restart > /dev/null 2>&1 || true'
+        log_files                 => [ '/var/log/dhcpd.log' ],
+        lastaction_restart_logger => true
       }
     }
   }
