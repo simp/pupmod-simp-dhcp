@@ -8,8 +8,8 @@ describe 'dhcp' do
       end
 
       context "on #{os}" do
-        context 'in the :foo environment' do
-          let(:environment){:foo}
+        context 'in the foo environment' do
+          let(:environment){'foo'}
 
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to contain_class('dhcp::dhcpd') }
