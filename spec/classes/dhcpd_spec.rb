@@ -43,14 +43,14 @@ describe 'dhcp::dhcpd' do
         end
 
         context 'with firewall => true, syslog => true, logrotate => true' do
-	        let(:params) {{:firewall => true, :syslog => true, :logrotate => true }}
+          let(:params) {{:firewall => true, :syslog => true, :logrotate => true }}
           it { is_expected.to create_class('dhcp::dhcpd') }
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to create_iptables__rule('allow_bootp') }
           it { is_expected.to create_logrotate__rule('dhcpd') }
           it { is_expected.to contain_rsyslog__rule__local ( 'XX_dhcpd' ) }
 
-          if ['RedHat','CentOS'].include?(facts[:operatingsystem])
+          if ['RedHat','CentOS','OracleLinux'].include?(facts[:operatingsystem])
             if facts[:operatingsystemmajrelease].to_s < '7'
               it { should create_file('/etc/logrotate.d/dhcpd').with_content(/#{file_content_6}/)}
             else
