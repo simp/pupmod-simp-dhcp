@@ -35,12 +35,12 @@
 # * Trevor Vaughan <tvaughan@onyxpoint.com>
 #
 class dhcp::dhcpd (
-  String                   $rsync_source  = "dhcpd_${::environment}_${facts['os']['name']}/dhcpd.conf",
-  String                   $rsync_server  = simplib::lookup('simp_options::rsync::server', { 'default_value'  => '127.0.0.1' }),
-  Stdlib::Compat::Integer  $rsync_timeout = simplib::lookup('simp_options::rsync::timeout', { 'default_value' => '2' }),
-  Boolean                  $firewall      = simplib::lookup('simp_options::firewall', { 'default_value'       => false }),
-  Boolean                  $logrotate     = simplib::lookup('simp_options::logrotate', { 'default_value'      => false }),
-  Boolean                  $syslog        = simplib::lookup('simp_options::syslog', { 'default_value'         => false })
+  String                  $rsync_source  = "dhcpd_${::environment}_${facts['os']['name']}/dhcpd.conf",
+  String                  $rsync_server  = simplib::lookup('simp_options::rsync::server', { 'default_value' => '127.0.0.1' }),
+  Stdlib::Compat::Integer $rsync_timeout = simplib::lookup('simp_options::rsync::timeout', { 'default_value' => '2' }),
+  Boolean                 $firewall      = simplib::lookup('simp_options::firewall', { 'default_value' => false }),
+  Boolean                 $logrotate     = simplib::lookup('simp_options::logrotate', { 'default_value' => false }),
+  Boolean                 $syslog        = simplib::lookup('simp_options::syslog', { 'default_value' => false })
 ){
 
   include '::rsync'
