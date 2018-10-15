@@ -1,51 +1,40 @@
-# == Class: dhcp::dhcpd
-#
 # This class is used to start dhcpd and create dhcpd.conf
 #
-# == Parameters
-#
-# [*rsync_server*]
-# Type: FQDN
-# Default: 127.0.0.1
+# @param rsync_server
 #   The address of the server from which to pull the DHCPD
 #   configuration.
 #
-# [*rsync_timeout*]
-# Type: Integer
-# Default: '2'
+# @param rsync_timeout
 #   The connection timeout when communicating with the rsync server.
 #
-# [*firewall*]
-# Type: Boolean
-# Default: false
-# Whether or not to include the SIMP iptables class.
+# @param firewall
+#   Whether or not to include the SIMP iptables class.
 #
-# [*logrotate*]
-# Type: Boolean
-# Default: false
-# Whether or not to include the SIMP logrotate class.
+# @param logrotate
+#   Whether or not to include the SIMP logrotate class.
 #
-# [*syslog*]
-# Type: Boolean
-# Default: false
-# Whether or not to include the SIMP rsyslog class.
+# @param syslog
+#   Whether or not to include the SIMP rsyslog class.
 #
-# == Authors
+# @param package_ensure The ensure status of the dhcp package
 #
-# * Trevor Vaughan <tvaughan@onyxpoint.com>
+# @author https://github.com/simp/pupmod-simp-dhcp/graphs/contributors
 #
 class dhcp::dhcpd (
-  String                  $rsync_source  = "dhcpd_${::environment}_${facts['os']['name']}/dhcpd.conf",
-  String                  $rsync_server  = simplib::lookup('simp_options::rsync::server', { 'default_value' => '127.0.0.1' }),
-  Stdlib::Compat::Integer $rsync_timeout = simplib::lookup('simp_options::rsync::timeout', { 'default_value' => '2' }),
-  Boolean                 $firewall      = simplib::lookup('simp_options::firewall', { 'default_value' => false }),
-  Boolean                 $logrotate     = simplib::lookup('simp_options::logrotate', { 'default_value' => false }),
-  Boolean                 $syslog        = simplib::lookup('simp_options::syslog', { 'default_value' => false })
-){
+  String                  $rsync_source   = "dhcpd_${::environment}_${facts['os']['name']}/dhcpd.conf",
+  String                  $rsync_server   = simplib::lookup('simp_options::rsync::server', { 'default_value' => '127.0.0.1' }),
+  Stdlib::Compat::Integer $rsync_timeout  = simplib::lookup('simp_options::rsync::timeout', { 'default_value' => '2' }),
+  Boolean                 $firewall       = simplib::lookup('simp_options::firewall', { 'default_value' => false }),
+  Boolean                 $logrotate      = simplib::lookup('simp_options::logrotate', { 'default_value' => false }),
+  Boolean                 $syslog         = simplib::lookup('simp_options::syslog', { 'default_value' => false }),
+  String                  $package_ensure = simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' }),
+) {
 
   include '::rsync'
 
-  package { 'dhcp': ensure => 'latest' }
+  package { 'dhcp':
+    ensure => $package_ensure
+  }
 
   file { '/etc/dhcp':
     ensure => 'directory',
