@@ -7,7 +7,7 @@ gem_sources.each { |gem_source| source gem_source }
 
 group :test do
   gem 'rake'
-  gem 'puppet', ENV.fetch('PUPPET_VERSION',  '~> 4.0')
+  gem 'puppet', ENV.fetch('PUPPET_VERSION',  '~> 5.0')
   gem 'rspec'
   gem 'hiera-puppet-helper'
   gem 'metadata-json-lint'
