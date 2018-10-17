@@ -1,4 +1,11 @@
-* Mon Mar 19 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 6.0.2-0
+* Mon Oct 15 2018 Nick Miller <nick.miller@onyxpoint.com> - 6.1.0-0
+- Added $dhcp::dhcpd::package_ensure parameter
+  - Changed the package from 'latest' to 'installed'
+  - It will also respect `simp_options::package_ensure`
+- Remove support for Puppet less than 4.10.4
+- Add Puppet Strings documentation
+
+* Mon Mar 19 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 6.1.0-0
 - Added support for OEL and Puppet 5
 
 * Wed Apr 19 2017 Nick Markowski <nmarkowski@keywcorp.com> - 6.0.1-0
@@ -125,4 +132,3 @@
 - Dhcpd now writes to /var/log/dhcpd.log
 - Addition of pupmod-iptables, pupmod-rsyslog, and pupmod-logrotate to the requires list.
 - Code refactor and doc update.
-

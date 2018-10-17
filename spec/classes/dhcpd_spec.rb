@@ -14,7 +14,7 @@ describe 'dhcp::dhcpd' do
       context 'in the foo environment' do
         it { is_expected.to create_class('dhcp::dhcpd') }
         it { is_expected.to compile.with_all_deps }
-        it { is_expected.to contain_package('dhcp').with_ensure('latest') }
+        it { is_expected.to contain_package('dhcp').with_ensure('installed') }
         it { is_expected.to contain_service('dhcpd').with({
             :ensure  =>'running',
             :require => ['File[/etc/dhcpd.conf]', 'Package[dhcp]']
