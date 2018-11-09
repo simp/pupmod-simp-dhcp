@@ -4,6 +4,7 @@
   - It will also respect `simp_options::package_ensure`
 - Remove support for Puppet less than 4.10.4
 - Add Puppet Strings documentation
+- Update badges and contribution guide URL in README.md
 
 * Mon Mar 19 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 6.1.0-0
 - Added support for OEL and Puppet 5
