@@ -1,3 +1,7 @@
+* Tue Feb 12 2019 Liz Nemsick <lnemsick.simp@gmail.com> - 6.1.1-0
+- Use simplib::passgen() in lieu of passgen(), a deprecated simplib
+  Puppet 3 function.
+
 * Mon Oct 15 2018 Nick Miller <nick.miller@onyxpoint.com> - 6.1.0-0
 - Added $dhcp::dhcpd::package_ensure parameter
   - Changed the package from 'latest' to 'installed'
