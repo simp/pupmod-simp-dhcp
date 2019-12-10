@@ -1,3 +1,13 @@
+* Tue Dec 10 2019 Trevor Vaughan <tvaughan@onyxpoint.com> - 6.2.0-0
+- Add EL8 support
+- Updated README.md
+- Added REFERENCE.md
+- Made use of rsync optional (enabled by default for backwards compatibility)
+- Add support for passing in a full dhcpd.conf entry
+- Ensure that the SELinux user and type are set for the configuration files
+- Switch to using iptables::listen::udp for firewalld compatibility
+- Add acceptance test
+
 * Fri Aug 02 2019 Robert Vincent <pillarsdotnet@gmail.com> - 6.2.0-0
 - Drop Puppet 4 support
 - Add Puppet 6 support
