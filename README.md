@@ -13,8 +13,18 @@ If you find any issues, they can be submitted to our [JIRA](https://simp-project
 
 Please read our [Contribution Guide](https://simp.readthedocs.io/en/stable/contributors_guide/index.html).
 
-## Work in Progress
+## Module Description
 
-Please excuse us as we transition this code into the public domain.
+This module sets up a DHCP server. The configuration is primarily pulled from a
+SIMP ``rsync`` server.
 
-Downloads, discussion, and patches are still welcome!
+## Reference
+
+Plesae see [REFERENCE.md](./REFERENCE.md) for a full reference.
+
+# Development
+
+Please read our [Contribution Guide](https://simp.readthedocs.io/en/stable/contributors_guide/index.html).
+
+Visit the [project homepage](https://simp-project.com) and look at our issues on
+[JIRA](https://simp-project.atlassian.net).

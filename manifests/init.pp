@@ -1,7 +1,12 @@
-# This class provides an input selector for configuring the DHCP
-# server or client.
+# @summary A selector for configuring the DHCP server or client
 #
 # The client portion has not yet been implemented.
+#
+# @param is_client
+#   Not yet implemented
+#
+# @param is_server
+#   Denotes that the system is a DHCP server
 #
 # @author https://github.com/simp/pupmod-simp-dhcp/graphs/contributors
 #

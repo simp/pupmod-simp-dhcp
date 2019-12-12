@@ -2,6 +2,9 @@
 fixtures:
   repositories:
     iptables: https://github.com/simp/pupmod-simp-iptables
+    firewalld:
+      repo: https://github.com/simp/pupmod-voxpupuli-firewalld
+      ref: v4.1.0
     logrotate: https://github.com/simp/pupmod-simp-logrotate
     rsync: https://github.com/simp/pupmod-simp-rsync
     rsyslog: https://github.com/simp/pupmod-simp-rsyslog
