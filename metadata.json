@@ -1,6 +1,6 @@
 {
   "name": "simp-dhcp",
-  "version": "6.2.0",
+  "version": "6.2.1",
   "author": "SIMP Team",
   "summary": "A Puppet module to automate configuration of DHCP",
   "license": "Apache-2.0",
@@ -42,24 +42,21 @@
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "8",
-        "7",
-        "6"
+        "7"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "8",
-        "7",
-        "6"
+        "7"
       ]
     },
     {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
         "8",
-        "7",
-        "6"
+        "7"
       ]
     }
   ],
