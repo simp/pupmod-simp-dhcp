@@ -2,9 +2,7 @@
 fixtures:
   repositories:
     iptables: https://github.com/simp/pupmod-simp-iptables
-    firewalld:
-      repo: https://github.com/simp/pupmod-voxpupuli-firewalld
-      ref: v4.1.0
+    firewalld: https://github.com/simp/pupmod-voxpupuli-firewalld
     logrotate: https://github.com/simp/pupmod-simp-logrotate
     rsync: https://github.com/simp/pupmod-simp-rsync
     rsyslog: https://github.com/simp/pupmod-simp-rsyslog
@@ -12,6 +10,7 @@ fixtures:
       repo: https://github.com/simp/pupmod-puppetlabs-selinux_core.git
       puppet_version: ">= 6.0.0"
     simplib: https://github.com/simp/pupmod-simp-simplib
+    simp_firewalld: https://github.com/simp/pupmod-simp-simp_firewalld
     stdlib: https://github.com/simp/puppetlabs-stdlib
     systemd: https://github.com/simp/puppet-systemd
   symlinks:
