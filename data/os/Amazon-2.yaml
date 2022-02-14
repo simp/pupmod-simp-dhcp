@@ -1,0 +1,2 @@
+---
+dhcp::dhcpd::package_name: 'dhcp'
