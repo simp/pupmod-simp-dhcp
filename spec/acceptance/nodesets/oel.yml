@@ -11,7 +11,7 @@ HOSTS:
       - server-el7
       - default
     platform: el-7-x86_64
-    box: generic/oel-7-x86_64
+    box: generic/oracle7
     hypervisor: <%= hypervisor %>
 
   oel8:
