@@ -11,7 +11,7 @@ HOSTS:
       - server-el7
       - default
     platform: el-7-x86_64
-    box: onyxpoint/oel-7-x86_64
+    box: generic/oracle7
     hypervisor: <%= hypervisor %>
 
   oel8:
@@ -24,7 +24,6 @@ HOSTS:
 CONFIG:
   log_level: verbose
   type: aio
-  vagrant_memsize: 256
   synced_folder: disabled
 <% if ENV['BEAKER_PUPPET_ENVIRONMENT'] -%>
   puppet_environment: <%= ENV['BEAKER_PUPPET_ENVIRONMENT'] %>
