@@ -1,6 +1,6 @@
 {
   "name": "simp-dhcp",
-  "version": "6.3.1",
+  "version": "6.4.0",
   "author": "SIMP Team",
   "summary": "A Puppet module to automate configuration of DHCP",
   "license": "Apache-2.0",
@@ -14,7 +14,7 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 6.6.0 < 8.0.0"
+      "version_requirement": ">= 8.0.0 < 9.0.0"
     },
     {
       "name": "simp/iptables",
@@ -63,6 +63,12 @@
       "operatingsystemrelease": [
         "8",
         "7"
+      ]
+    },
+    {
+      "operatingsystem": "Rocky",
+      "operatingsystemrelease": [
+        "8"
       ]
     }
   ],

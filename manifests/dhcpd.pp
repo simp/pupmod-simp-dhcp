@@ -37,7 +37,7 @@ class dhcp::dhcpd (
   String[1]               $package_name, # In module data
   Optional[String[1]]     $dhcpd_conf        = undef,
   Boolean                 $enable_data_rsync = true,
-  String[1]               $rsync_source      = "dhcpd_${::environment}_${facts['os']['name']}/dhcpd.conf",
+  String[1]               $rsync_source      = "dhcpd_${facts['environment']}_${facts['os']['name']}/dhcpd.conf",
   String[1]               $rsync_server      = simplib::lookup('simp_options::rsync::server', { 'default_value' => '127.0.0.1' }),
   Stdlib::Compat::Integer $rsync_timeout     = simplib::lookup('simp_options::rsync::timeout', { 'default_value' => '2' }),
   Boolean                 $firewall          = simplib::lookup('simp_options::firewall', { 'default_value' => false }),
@@ -123,8 +123,8 @@ class dhcp::dhcpd (
 
     $_downcase_os_name = downcase($facts['os']['name'])
     rsync { 'dhcpd':
-      user      => "dhcpd_rsync_${::environment}_${_downcase_os_name}",
-      password  => simplib::passgen("dhcpd_rsync_${::environment}_${_downcase_os_name}"),
+      user      => "dhcpd_rsync_${facts['environment']}_${_downcase_os_name}",
+      password  => simplib::passgen("dhcpd_rsync_${facts['environment']}_${_downcase_os_name}"),
       server    => $rsync_server,
       timeout   => $rsync_timeout,
       source    => $rsync_source,
