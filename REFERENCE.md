@@ -7,7 +7,7 @@
 ### Classes
 
 * [`dhcp`](#dhcp): A selector for configuring the DHCP server or client
-* [`dhcp::dhcpd`](#dhcpdhcpd): This class is used to start dhcpd and create dhcpd.conf
+* [`dhcp::dhcpd`](#dhcp--dhcpd): This class is used to start dhcpd and create dhcpd.conf
 
 ## Classes
 
@@ -19,26 +19,26 @@ The client portion has not yet been implemented.
 
 The following parameters are available in the `dhcp` class:
 
-* [`is_client`](#is_client)
-* [`is_server`](#is_server)
+* [`is_client`](#-dhcp--is_client)
+* [`is_server`](#-dhcp--is_server)
 
-##### <a name="is_client"></a>`is_client`
+##### <a name="-dhcp--is_client"></a>`is_client`
 
 Data type: `Boolean`
 
 Not yet implemented
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="is_server"></a>`is_server`
+##### <a name="-dhcp--is_server"></a>`is_server`
 
 Data type: `Boolean`
 
 Denotes that the system is a DHCP server
 
-Default value: ``true``
+Default value: `true`
 
-### <a name="dhcpdhcpd"></a>`dhcp::dhcpd`
+### <a name="dhcp--dhcpd"></a>`dhcp::dhcpd`
 
 This class is used to start dhcpd and create dhcpd.conf
 
@@ -46,24 +46,24 @@ This class is used to start dhcpd and create dhcpd.conf
 
 The following parameters are available in the `dhcp::dhcpd` class:
 
-* [`package_name`](#package_name)
-* [`enable_data_rsync`](#enable_data_rsync)
-* [`rsync_server`](#rsync_server)
-* [`rsync_timeout`](#rsync_timeout)
-* [`dhcpd_conf`](#dhcpd_conf)
-* [`firewall`](#firewall)
-* [`logrotate`](#logrotate)
-* [`syslog`](#syslog)
-* [`package_ensure`](#package_ensure)
-* [`rsync_source`](#rsync_source)
+* [`package_name`](#-dhcp--dhcpd--package_name)
+* [`enable_data_rsync`](#-dhcp--dhcpd--enable_data_rsync)
+* [`rsync_server`](#-dhcp--dhcpd--rsync_server)
+* [`rsync_timeout`](#-dhcp--dhcpd--rsync_timeout)
+* [`dhcpd_conf`](#-dhcp--dhcpd--dhcpd_conf)
+* [`firewall`](#-dhcp--dhcpd--firewall)
+* [`logrotate`](#-dhcp--dhcpd--logrotate)
+* [`syslog`](#-dhcp--dhcpd--syslog)
+* [`package_ensure`](#-dhcp--dhcpd--package_ensure)
+* [`rsync_source`](#-dhcp--dhcpd--rsync_source)
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-dhcp--dhcpd--package_name"></a>`package_name`
 
 Data type: `String[1]`
 
 The DHCP server package name
 
-##### <a name="enable_data_rsync"></a>`enable_data_rsync`
+##### <a name="-dhcp--dhcpd--enable_data_rsync"></a>`enable_data_rsync`
 
 Data type: `Boolean`
 
@@ -71,9 +71,9 @@ Enable the retrieval of the DHCP configuration from an rsync server
 
 * NOTE: This will be disabled by default at some point in the future
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="rsync_server"></a>`rsync_server`
+##### <a name="-dhcp--dhcpd--rsync_server"></a>`rsync_server`
 
 Data type: `String[1]`
 
@@ -82,7 +82,7 @@ configuration
 
 Default value: `simplib::lookup('simp_options::rsync::server', { 'default_value' => '127.0.0.1' })`
 
-##### <a name="rsync_timeout"></a>`rsync_timeout`
+##### <a name="-dhcp--dhcpd--rsync_timeout"></a>`rsync_timeout`
 
 Data type: `Stdlib::Compat::Integer`
 
@@ -90,7 +90,7 @@ The connection timeout when communicating with the rsync server
 
 Default value: `simplib::lookup('simp_options::rsync::timeout', { 'default_value' => '2' })`
 
-##### <a name="dhcpd_conf"></a>`dhcpd_conf`
+##### <a name="-dhcp--dhcpd--dhcpd_conf"></a>`dhcpd_conf`
 
 Data type: `Optional[String[1]]`
 
@@ -98,9 +98,9 @@ The entire contents of the /etc/dhcpd.conf configuration file
 
 * If this is set, `$enable_data_rsync` will be forced to `false`
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="firewall"></a>`firewall`
+##### <a name="-dhcp--dhcpd--firewall"></a>`firewall`
 
 Data type: `Boolean`
 
@@ -108,7 +108,7 @@ Whether or not to include the SIMP iptables class
 
 Default value: `simplib::lookup('simp_options::firewall', { 'default_value' => false })`
 
-##### <a name="logrotate"></a>`logrotate`
+##### <a name="-dhcp--dhcpd--logrotate"></a>`logrotate`
 
 Data type: `Boolean`
 
@@ -116,7 +116,7 @@ Whether or not to include the SIMP logrotate class
 
 Default value: `simplib::lookup('simp_options::logrotate', { 'default_value' => false })`
 
-##### <a name="syslog"></a>`syslog`
+##### <a name="-dhcp--dhcpd--syslog"></a>`syslog`
 
 Data type: `Boolean`
 
@@ -124,7 +124,7 @@ Whether or not to include the SIMP rsyslog class
 
 Default value: `simplib::lookup('simp_options::syslog', { 'default_value' => false })`
 
-##### <a name="package_ensure"></a>`package_ensure`
+##### <a name="-dhcp--dhcpd--package_ensure"></a>`package_ensure`
 
 Data type: `String[1]`
 
@@ -132,11 +132,11 @@ The ensure status of the dhcp package
 
 Default value: `simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })`
 
-##### <a name="rsync_source"></a>`rsync_source`
+##### <a name="-dhcp--dhcpd--rsync_source"></a>`rsync_source`
 
 Data type: `String[1]`
 
 
 
-Default value: `"dhcpd_${::environment}_${facts['os']['name']}/dhcpd.conf"`
+Default value: `"dhcpd_${facts['environment']}_${facts['os']['name']}/dhcpd.conf"`
 
