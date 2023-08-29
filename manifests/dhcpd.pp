@@ -34,16 +34,19 @@
 # @author https://github.com/simp/pupmod-simp-dhcp/graphs/contributors
 #
 class dhcp::dhcpd (
-  String[1]               $package_name, # In module data
-  Optional[String[1]]     $dhcpd_conf        = undef,
-  Boolean                 $enable_data_rsync = true,
-  String[1]               $rsync_source      = "dhcpd_${facts['environment']}_${facts['os']['name']}/dhcpd.conf",
-  String[1]               $rsync_server      = simplib::lookup('simp_options::rsync::server', { 'default_value' => '127.0.0.1' }),
-  Stdlib::Compat::Integer $rsync_timeout     = simplib::lookup('simp_options::rsync::timeout', { 'default_value' => '2' }),
-  Boolean                 $firewall          = simplib::lookup('simp_options::firewall', { 'default_value' => false }),
-  Boolean                 $logrotate         = simplib::lookup('simp_options::logrotate', { 'default_value' => false }),
-  Boolean                 $syslog            = simplib::lookup('simp_options::syslog', { 'default_value' => false }),
-  String[1]               $package_ensure    = simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })
+  String[1]            $package_name, # In module data
+  Optional[String[1]]  $dhcpd_conf        = undef,
+  Boolean              $enable_data_rsync = true,
+  String[1]            $rsync_source      = "dhcpd_${facts['environment']}_${facts['os']['name']}/dhcpd.conf",
+  String[1]            $rsync_server      = simplib::lookup('simp_options::rsync::server', { 'default_value' => '127.0.0.1' }),
+  Variant[
+    Integer[0],
+    Pattern[/\A\d+\z/]
+  ]                    $rsync_timeout     = simplib::lookup('simp_options::rsync::timeout', { 'default_value' => '2' }),
+  Boolean              $firewall          = simplib::lookup('simp_options::firewall', { 'default_value' => false }),
+  Boolean              $logrotate         = simplib::lookup('simp_options::logrotate', { 'default_value' => false }),
+  Boolean              $syslog            = simplib::lookup('simp_options::syslog', { 'default_value' => false }),
+  String[1]            $package_ensure    = simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })
 ) {
 
   if $dhcpd_conf {

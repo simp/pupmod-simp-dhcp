@@ -84,7 +84,14 @@ Default value: `simplib::lookup('simp_options::rsync::server', { 'default_value'
 
 ##### <a name="-dhcp--dhcpd--rsync_timeout"></a>`rsync_timeout`
 
-Data type: `Stdlib::Compat::Integer`
+Data type:
+
+```puppet
+Variant[
+    Integer[0],
+    Pattern[/\A\d+\z/]
+  ]
+```
 
 The connection timeout when communicating with the rsync server
 
