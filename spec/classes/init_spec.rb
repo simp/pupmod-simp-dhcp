@@ -2,10 +2,8 @@ require 'spec_helper'
 
 describe 'dhcp' do
   context 'supported operating systems' do
-    on_supported_os.each do |os, facts|
-      let(:facts) do
-        facts
-      end
+    on_supported_os.each do |os, os_facts|
+      let(:facts) { os_facts }
 
       context "on #{os}" do
         context 'in the foo environment' do
