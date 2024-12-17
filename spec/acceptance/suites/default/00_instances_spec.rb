@@ -11,9 +11,9 @@ describe 'dhcpd' do
     end
     let(:hieradata) do
       {
-        'iptables::ports' => { 22 => { 'proto' => 'tcp', 'trusted_nets' => ['ALL'] } },
-     'simp_options::firewall'  => true,
-     'dhcp::dhcpd::dhcpd_conf' => dhcp_config
+        'iptables::ports'         => { 22 => { 'proto' => 'tcp', 'trusted_nets' => ['ALL'] } },
+        'simp_options::firewall'  => true,
+        'dhcp::dhcpd::dhcpd_conf' => dhcp_config,
       }
     end
 
