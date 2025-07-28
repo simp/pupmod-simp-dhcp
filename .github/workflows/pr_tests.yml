@@ -138,8 +138,6 @@ jobs:
           - docker_centos9
           - docker_oel8
           - docker_oel9
-          - docker_rhel8
-          - docker_rhel9
           - docker_rocky8
           - docker_rocky9
       fail-fast: false
