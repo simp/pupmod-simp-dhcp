@@ -1,3 +1,6 @@
+* Mon Jul 28 2025 Mike Riddle <mike@sicura.us> - 7.0.0
+- Removed el7 support
+
 * Fri Sep 13 2024 Steven Pritchard <steve@sicura.us> - 6.9.0
 - [puppetsync] Update module dependencies to support simp-iptables 7.x
 
