@@ -11,7 +11,7 @@ describe 'dhcp::dhcpd' do
       end
 
       let(:package_name) do
-        if os_facts[:os][:release][:major].to_s < '8'
+        if os_facts[:os][:release][:major].to_i < 8
           'dhcp'
         else
           'dhcp-server'
