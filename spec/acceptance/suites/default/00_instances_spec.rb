@@ -24,8 +24,7 @@ describe 'dhcpd' do
         # dhcp-server package to install on EL10. Skip the package-dependent
         # examples there rather than failing the suite. This is an OS package
         # gap, not a hypervisor limitation, so it is keyed on the OS major.
-        el_major = fact_on(host, 'os.release.major').to_i
-        dhcp_server_available = el_major < 10
+        let(:dhcp_server_available) { fact_on(host, 'os.release.major').to_i < 10 }
 
         # The simplest dhcpd.conf that won't give an error during restart
         let(:dhcp_config) { "subnet #{fact_on(host, 'networking.network').strip} netmask #{fact_on(host, 'networking.netmask')} { }" }
