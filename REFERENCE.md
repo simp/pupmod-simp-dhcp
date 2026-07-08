@@ -63,6 +63,8 @@ Data type: `String[1]`
 
 The DHCP server package name
 
+Default value: `'dhcp-server'`
+
 ##### <a name="-dhcp--dhcpd--enable_data_rsync"></a>`enable_data_rsync`
 
 Data type: `Boolean`
