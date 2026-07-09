@@ -48,6 +48,7 @@ The following parameters are available in the `dhcp::dhcpd` class:
 
 * [`package_name`](#-dhcp--dhcpd--package_name)
 * [`enable_data_rsync`](#-dhcp--dhcpd--enable_data_rsync)
+* [`rsync_source`](#-dhcp--dhcpd--rsync_source)
 * [`rsync_server`](#-dhcp--dhcpd--rsync_server)
 * [`rsync_timeout`](#-dhcp--dhcpd--rsync_timeout)
 * [`dhcpd_conf`](#-dhcp--dhcpd--dhcpd_conf)
@@ -55,7 +56,6 @@ The following parameters are available in the `dhcp::dhcpd` class:
 * [`logrotate`](#-dhcp--dhcpd--logrotate)
 * [`syslog`](#-dhcp--dhcpd--syslog)
 * [`package_ensure`](#-dhcp--dhcpd--package_ensure)
-* [`rsync_source`](#-dhcp--dhcpd--rsync_source)
 
 ##### <a name="-dhcp--dhcpd--package_name"></a>`package_name`
 
@@ -74,6 +74,15 @@ Enable the retrieval of the DHCP configuration from an rsync server
 * NOTE: This will be disabled by default at some point in the future
 
 Default value: `true`
+
+##### <a name="-dhcp--dhcpd--rsync_source"></a>`rsync_source`
+
+Data type: `String[1]`
+
+The rsync source path, relative to the module on the rsync server,
+from which to pull the DHCPD configuration
+
+Default value: `"dhcpd_${facts['environment']}_${facts['os']['name']}/dhcpd.conf"`
 
 ##### <a name="-dhcp--dhcpd--rsync_server"></a>`rsync_server`
 
@@ -140,12 +149,4 @@ Data type: `String[1]`
 The ensure status of the dhcp package
 
 Default value: `simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })`
-
-##### <a name="-dhcp--dhcpd--rsync_source"></a>`rsync_source`
-
-Data type: `String[1]`
-
-
-
-Default value: `"dhcpd_${facts['environment']}_${facts['os']['name']}/dhcpd.conf"`
 
