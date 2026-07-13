@@ -8,6 +8,10 @@
 #
 #   * NOTE: This will be disabled by default at some point in the future
 #
+# @param rsync_source
+#   The rsync source path, relative to the module on the rsync server,
+#   from which to pull the DHCPD configuration
+#
 # @param rsync_server
 #   The address of the server from which to pull the DHCPD
 #   configuration
@@ -48,7 +52,6 @@ class dhcp::dhcpd (
   Boolean              $syslog            = simplib::lookup('simp_options::syslog', { 'default_value' => false }),
   String[1]            $package_ensure    = simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })
 ) {
-
   if $dhcpd_conf {
     $_enable_data_rsync = false
   }
@@ -115,7 +118,7 @@ class dhcp::dhcpd (
       include 'logrotate'
 
       logrotate::rule { 'dhcpd':
-        log_files                 => [ '/var/log/dhcpd.log' ],
+        log_files                 => ['/var/log/dhcpd.log'],
         lastaction_restart_logger => true
       }
     }
