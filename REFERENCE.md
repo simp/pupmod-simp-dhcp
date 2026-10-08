@@ -149,4 +149,3 @@ Data type: `String[1]`
 The ensure status of the dhcp package
 
 Default value: `simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })`
-
