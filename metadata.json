@@ -1,6 +1,6 @@
 {
   "name": "simp-dhcp",
-  "version": "8.0.2",
+  "version": "8.1.0",
   "author": "SIMP Team",
   "summary": "A Puppet module to automate configuration of DHCP",
   "license": "Apache-2.0",
@@ -18,7 +18,7 @@
     },
     {
       "name": "simp/iptables",
-      "version_requirement": ">= 6.5.3 < 9.0.0"
+      "version_requirement": ">= 6.5.3 < 10.0.0"
     },
     {
       "name": "simp/simplib",
@@ -30,7 +30,7 @@
     },
     {
       "name": "simp/rsyslog",
-      "version_requirement": ">= 7.6.0 < 10.0.0"
+      "version_requirement": ">= 7.6.0 < 11.0.0"
     },
     {
       "name": "simp/rsync",
@@ -76,7 +76,7 @@
   "requirements": [
     {
       "name": "openvox",
-      "version_requirement": ">= 8.0.0 < 9.0.0"
+      "version_requirement": ">= 8.0.0 < 10.0.0"
     }
   ]
 }
