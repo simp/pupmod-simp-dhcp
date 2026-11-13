@@ -95,12 +95,12 @@ declared but **unimplemented** client mode.
 
 Module dependencies (from `metadata.json`):
 
-- `puppetlabs/stdlib` `>= 8.0.0 < 10.0.0`
-- `simp/iptables` `>= 6.5.3 < 8.0.0`
-- `simp/simplib` `>= 4.9.0 < 5.0.0` (provides `simplib::lookup`, `simplib::passgen`)
-- `simp/logrotate` `>= 6.5.0 < 7.0.0`
-- `simp/rsyslog` `>= 7.6.0 < 9.0.0`
-- `simp/rsync` `>= 6.1.1 < 7.0.0`
+- `puppetlabs/stdlib` `>= 8.0.0 < 11.0.0`
+- `simp/iptables` `>= 6.5.3 < 10.0.0`
+- `simp/simplib` `>= 4.9.0 < 8.0.0` (provides `simplib::lookup`, `simplib::passgen`)
+- `simp/logrotate` `>= 6.5.0 < 8.0.0`
+- `simp/rsyslog` `>= 7.6.0 < 12.0.0`
+- `simp/rsync` `>= 6.1.1 < 9.0.0`
 
 Fixture-only dependencies (from `.fixtures.yml`, present for test compilation
 but not runtime deps): `augeas_core`, `firewalld`, `selinux_core`,
