@@ -96,7 +96,7 @@ declared but **unimplemented** client mode.
 Module dependencies (from `metadata.json`):
 
 - `puppetlabs/stdlib` `>= 8.0.0 < 11.0.0`
-- `simp/iptables` `>= 6.5.3 < 10.0.0`
+- `simp/iptables` `>= 6.5.3 < 11.0.0`
 - `simp/simplib` `>= 4.9.0 < 8.0.0` (provides `simplib::lookup`, `simplib::passgen`)
 - `simp/logrotate` `>= 6.5.0 < 8.0.0`
 - `simp/rsyslog` `>= 7.6.0 < 12.0.0`
